@@ -1,8 +1,5 @@
 #include "application.hpp"
 
-#include <iostream>
-#include <stdexcept>
-
 int main() {
   try {
     Application app;

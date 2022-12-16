@@ -3,7 +3,7 @@ LIB := -LC:/SFML-2.5.1/lib -LC:/SFML-2.5.1/bin
 LIBS := -lsfml-graphics -lsfml-window -lsfml-system
 EXEC := main.exe
 
-gcc := g++ -std=c++17
+gcc := g++ -std=c++17 -fexceptions
 rm := del
 
 .PHONY := all build clean

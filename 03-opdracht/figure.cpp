@@ -21,3 +21,12 @@ bool Figure::contain(const sf::Vector2i &p) {
   sf::Vector2f r = {static_cast<float>(p.x), static_cast<float>(p.y)};
   return hitbox.contains(r.x, r.y);
 }
+
+std::string Figure::getColorName(sf::Color color) const {
+  for (auto const &color : colors) {
+    if (color.color == this->color) {
+      return color.name;
+    }
+  }
+  return "unknown";
+}

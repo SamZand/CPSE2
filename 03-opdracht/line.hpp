@@ -1,21 +1,19 @@
-#ifndef _CIRCLE_HPP
-#define _CIRCLE_HPP
+#ifndef _LINE_HPP
+#define _LINE_HPP
 
 #include "figure.hpp"
 #include <SFML/Graphics.hpp>
 
-class Circle : public Figure {
+class Line : public Figure {
 private:
-  sf::CircleShape mCircle;
-  float radius;
+  sf::Vector2f lineEnd;
+  sf::Vertex mVertices[2];
   bool mSelected;
 
 public:
-  Circle(sf::Vector2f position, float radius, sf::Color color);
+  Line(sf::Vector2f position, sf::Vector2f lineEnd, sf::Color color);
 
-  sf::FloatRect getBounds() const override {
-    return mCircle.getGlobalBounds();
-  };
+  sf::FloatRect getBounds() const override { return {position, lineEnd}; };
 
   void update(sf::RenderWindow &window) override;
   void draw(sf::RenderWindow &window) override;
@@ -26,4 +24,4 @@ public:
   void write(std::ofstream &file) const;
 };
 
-#endif // _CIRCLE_HPP
+#endif // _LINE_HPP

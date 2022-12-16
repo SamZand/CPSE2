@@ -2,18 +2,21 @@
 #define _APPLICATION_HPP
 
 #include <SFML/Graphics.hpp>
-#include <SFML/Graphics/RenderWindow.hpp>
-#include <SFML/Graphics/Text.hpp>
-#include <SFML/System/Time.hpp>
 
 #include "action.hpp"
 #include "circle.hpp"
+#include "exception.hpp"
 #include "figure.hpp"
-#include "figureFactory.hpp"
-
+#include "line.hpp"
+#include "picture.hpp"
+#include "rectangle.hpp"
+#include <array>
+#include <fstream>
 #include <iostream>
 #include <memory>
+#include <string>
 #include <vector>
+#include "colors.hpp"
 
 class Application {
 public:
@@ -23,13 +26,15 @@ public:
   unsigned const int windowHeight = 480;
 
 private:
-  void processEvent();
-  void processActions(auto &object);
-  void processObjects();
-
-private:
-  // static const sf::Time TimePerFrame;
   sf::RenderWindow mWindow;
+  bool hadError = false;
+  std::vector<std::unique_ptr<Figure>> objects;
+
+  void processEvent();
+  void processActions();
+  void processObjects();
+  void makeObjects(const std::string &fileName);
+  void printObjects(const std::string &fileName);
 };
 
 #endif // APPLICATION_HPP

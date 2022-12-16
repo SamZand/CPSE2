@@ -1,20 +1,20 @@
-#ifndef _CIRCLE_HPP
-#define _CIRCLE_HPP
+#ifndef _Rectangle_HPP
+#define _Rectangle_HPP
 
 #include "figure.hpp"
 #include <SFML/Graphics.hpp>
 
-class Circle : public Figure {
+class Rectangle : public Figure {
 private:
-  sf::CircleShape mCircle;
-  float radius;
+  sf::RectangleShape mRectangle;
+  sf::Vector2f size;
   bool mSelected;
 
 public:
-  Circle(sf::Vector2f position, float radius, sf::Color color);
+  Rectangle(sf::Vector2f position, sf::Vector2f size, sf::Color color);
 
   sf::FloatRect getBounds() const override {
-    return mCircle.getGlobalBounds();
+    return mRectangle.getGlobalBounds();
   };
 
   void update(sf::RenderWindow &window) override;
@@ -26,4 +26,4 @@ public:
   void write(std::ofstream &file) const;
 };
 
-#endif // _CIRCLE_HPP
+#endif // _Rectangle_HPP
