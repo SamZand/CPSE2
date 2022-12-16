@@ -1,5 +1,5 @@
-
-(700, 300) Picture icon.jpg
+(510, 292) Rectangle magenta (50, 100)
+(479, 196) Picture icon.jpg
 (100, 100) Circle blue 30
 (100, 200) Circle red 50
 (200, 100) Rectangle blue (50, 100)

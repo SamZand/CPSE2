@@ -5,6 +5,7 @@
 
 #include "action.hpp"
 #include "circle.hpp"
+#include "colors.hpp"
 #include "exception.hpp"
 #include "figure.hpp"
 #include "line.hpp"
@@ -16,7 +17,6 @@
 #include <memory>
 #include <string>
 #include <vector>
-#include "colors.hpp"
 
 class Application {
 public:

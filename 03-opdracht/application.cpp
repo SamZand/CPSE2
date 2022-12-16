@@ -100,20 +100,25 @@ void Application::makeObjects(const std::string &fileName) {
 
   std::ifstream file(fileName);
   std::string line;
+  bool fileOpen = true;
   try {
-    while (std::getline(file, line)) {
+    while (fileOpen) {
       objects.emplace_back(createScreenObject(file));
       i++;
+      std::cout << line << std::endl;
       std::cout << "Creating object " << i << std::endl;
     }
-  } catch (const endOfFile &e) {
+  } catch (endOfFile) {
+
     std::cout << "End of file reached" << std::endl;
   }
   file.close();
+  fileOpen = false;
 }
 
 void Application::processObjects() {
-  std::unique_ptr<Figure> *selected;
+  std::unique_ptr<Figure> *selected = new std::unique_ptr<Figure>;
+
   for (auto &object : objects) {
     object->update(mWindow);
     if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
@@ -143,7 +148,9 @@ void Application::processActions() {
 
 void Application::printObjects(const std::string &fileName) {
   std::cout << "Printing objects" << std::endl;
-  std::ofstream file(fileName);
+  std::ofstream file;
+  file.open(fileName);
+
   if (!file) {
     std::cout << "Error opening file: " << fileName << std::endl;
     hadError = true;
@@ -157,7 +164,6 @@ void Application::printObjects(const std::string &fileName) {
 
 void Application::run() {
   const std::string fileName = "objectFile.txt";
-  const std::string outFileName = "outFile.txt";
   makeObjects(fileName);
 
   std::cout << "Start opdracht 3 \n";
@@ -171,9 +177,9 @@ void Application::run() {
     sf::sleep(sf::milliseconds(20));
   }
   if (hadError) {
-    std::cout << "Error in file: objects.txt" << std::endl;
+    std::cout << "Error in file: " << fileName << std::endl;
   }
-  printObjects(outFileName);
+  printObjects(fileName);
 
   std::cout << "Terminating application\n";
 }
