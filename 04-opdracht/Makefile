@@ -1,6 +1,6 @@
 EXEC := main.exe
 
-gcc := g++ -std=c++23 -fexceptions
+gcc := g++ -std=c++17 -fexceptions
 rm := del
 
 .PHONY := all build clean

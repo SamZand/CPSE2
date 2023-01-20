@@ -16,7 +16,7 @@ rm := del
 SOURCES := $(wildcard *.cpp)
 
 all: build
-	./$(EXEC)
+	./$(EXEC) $(ARGS)
 
 build:
 	$(CXX) $(CXXFLAGS) $(SOURCES) $(SFML_INC) $(SFML_LIB) $(SFML_STL) -o $(EXEC)
